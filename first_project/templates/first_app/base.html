@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+<title>navBar</title>
+</head>
+    <body>
+        {% comment %} <div class="container"> {% endcomment %}
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" id="navId">
+            <li class="nav-item">
+                <a href="{% url 'first_app:index' %}" class="nav-link active">Home</a> 
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a>
+                    <a class="dropdown-item" href="{% url 'first_app:users' %}">Users</a>
+                    <a class="dropdown-item" href="{% url 'first_app:form' %}">Form</a>
+                    {% comment %} <a class="dropdown-item" href="{% url 'first_app:user_login' %}">Login</a> {% endcomment %}
+                    <a class="dropdown-item" href="{% url 'first_app:registeration' %}">Registeration</a>
+                </div>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+              {% else %}
+                <li><a class="navbar-link" href="{% url 'first_app:user_login' %}">Login</a></li>
+              {% endif %}
+            </li>            
+        </ul>
+        
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="tab1Id" role="tabpanel"></div>
+            <div class="tab-pane fade" id="tab2Id" role="tabpanel"></div>
+            <div class="tab-pane fade" id="tab3Id" role="tabpanel"></div>
+            <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
+            <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
+        </div>
+        
+        <script>
+            $('#navId a').click(e => {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        </script>
+
+            
+        {% comment %} </div> {% endcomment %}
+        {% block body_block %}
+        
+        {% endblock  %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    </body>
+</html>

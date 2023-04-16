@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends 'first_app/base.html' %}
+{% block body_block %}
+    <div class="container">
+        
+        <form method='POST'> 
+            {{form.as_p }}
+
+            {% csrf_token %} 
+        
+            <button type="Submit" class="btn btn-primary">Submit</button>
+
+
+        </form>
+
+
+
+
+         {% if users_records  %} 
+
+        <ol >
+            {% for rec in users_records  %}
+            <li > user info</li>
+            <ul class="list-group">
+                <div class="container">
+                    
+                <li >{{rec.first_name }}</li>
+                <li >{{rec.last_name }}</li>
+                <li >{{rec.email }}</li>
+            </div>
+
+            </ul>
+  
+            {% endfor %}
+        </ol>
+        {% else %}
+        <p>no records to be accessed</p>
+        {% endif %} 
+
+
+        
+    </div>
+
+    {% endblock body_block %}

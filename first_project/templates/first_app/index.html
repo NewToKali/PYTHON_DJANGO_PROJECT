@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'first_app/base.html' %}
+{% load static %}
+{% load my_extras %}
+{% block body_block %}
+
+        <div class="jumbotron">
+            <h1 class="display-3">Jumbo heading</h1>
+            <p class="lead">Jumbo helper text</p>
+            <hr class="my-2">
+            <p>More info</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
+            </p>
+        </div>
+        <h1>{{ text|cuts:'Hello' }}</h1>
+        
+      <h1>Sorting Algorithmis</h1>
+
+      <i class="fas fa-images fa-lg fa-fw"><img src="{% static 'images/desert.jfif' %}"> </i>
+
+      <h2>Here is your acces records</h2>
+      <div class='djangotwo'> 
+        {% if access_records %} 
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th class="border-dark">Site Name</th>
+                    <th class="border-dark">Date Accessed</th>
+                </tr>
+            </thead>
+        {% for acc in access_records %}
+            <tbody>
+                <tr>
+                    <td scope="row">{{ acc.name }}</td>
+                    <td>{{ acc.date }}</td>
+                </tr>
+            </tbody>
+        {% endfor %}
+        </table>
+        {% else %}
+        <p>no records to be accessed</p>
+        {% endif %}
+
+
+
+      </div>
+
+        {% lorem 4 p random %}
+
+    </div>
+
+    {% endblock body_block %}

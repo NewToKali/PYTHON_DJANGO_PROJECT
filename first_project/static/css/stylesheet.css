@@ -1,0 +1,8 @@
+/* .djangotwo {
+    border: 2px solid black;
+    border-width: 5px;
+} */
+.table {
+    border: 2px solid black;
+    padding: 8px;
+}
